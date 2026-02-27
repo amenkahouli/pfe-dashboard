@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EyeFish - Dashboard IoT Marin</title>
+
+  <link rel="stylesheet" href="pfe.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🐟</div>
+      <div>
+        <h1>EyeFish - Dashboard IoT Marin</h1>
+        <p id="lastUpdate">Dernière mise à jour : --</p>
+      </div>
+    </div>
+
+    <div class="sys">
+      <div id="sysBadge" class="sysBadge"><span class="dot"></span></div>
+      <div id="sysText" class="sysText">Normal</div>
+      <button id="btnReset" class="btn">Reset historique</button>
+      <button id="btnClearAlerts" class="btn">Vider alertes</button>
+    </div>
+  </header>
+
+  <!-- ✅ Résumé alertes (1 seule ligne) -->
+  <section id="alertsPanel" class="alertsPanel">
+    <div class="alertsLine">
+      <div class="alertsLeft">
+        <span class="bell">🔔</span>
+        <span class="alertsTitle">Alertes</span>
+        <span id="alertsCount" class="alertsCount ok">0 alerte !!!</span>
+      </div>
+
+      <button id="btnAlertsDetails" class="btn btnSmall">Détails</button>
+    </div>
+  </section>
+
+  <!-- ✅ Cartes capteurs -->
+  <main class="wrap">
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <!-- ✅ Modal détails capteur -->
+  <div id="modal" class="modal">
+    <div class="modalCard">
+      <button id="mClose" class="modalClose">✕</button>
+
+      <div class="modalHead">
+        <div>
+          <h2 id="mTitle">Capteur</h2>
+          <p id="mSub" class="muted">Historique détaillé • -- mesures</p>
+        </div>
+      </div>
+
+      <div class="statsRow">
+        <div class="stat">
+          <div class="k">ACTUEL</div>
+          <div class="v"><span id="mNow">--</span></div>
+          <div class="u" id="mUnit1"></div>
+        </div>
+        <div class="stat">
+          <div class="k">MOYENNE</div>
+          <div class="v"><span id="mAvg">--</span></div>
+          <div class="u" id="mUnit2"></div>
+        </div>
+        <div class="stat">
+          <div class="k">MIN</div>
+          <div class="v"><span id="mMin">--</span></div>
+          <div class="u" id="mUnit3"></div>
+        </div>
+        <div class="stat">
+          <div class="k">MAX</div>
+          <div class="v"><span id="mMax">--</span></div>
+          <div class="u" id="mUnit4"></div>
+        </div>
+      </div>
+
+      <div class="trendBar">
+        <span id="mTrend">Tendance: --</span>
+      </div>
+
+      <div class="chartWrap">
+        <canvas id="detailChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Modal liste des alertes -->
+  <div id="alertsModal" class="modal">
+    <div class="modalCard">
+      <button id="alertsClose" class="modalClose">✕</button>
+
+      <div class="modalHead">
+        <div>
+          <h2>Historique des alertes</h2>
+          <p id="alertsModalSub" class="muted">--</p>
+        </div>
+      </div>
+
+      <div id="alertsModalList" class="alertsList"></div>
+    </div>
+  </div>
+
+  <script src="pfe.js"></script>
+</body>
+</html>
