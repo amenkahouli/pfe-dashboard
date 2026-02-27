@@ -18,7 +18,7 @@ const MAX_POINTS = 60;
 const REFRESH_MS = 5000;
 
 // seuil alerte température (garde ton choix)
-const TEMP_ALERT_THRESHOLD = 21;
+const TEMP_ALERT_THRESHOLD = 18;
 
 // --------- Alerts storage ----------
 const ALERTS_KEY = "eyefish_alerts_log";
@@ -613,4 +613,5 @@ document.addEventListener("click", (e)=>{
 // INIT
 renderAlertsLog(); // affiche "14 alertes !!!" si tu en as 14 en mémoire
 tick();
+
 setInterval(tick, REFRESH_MS);
